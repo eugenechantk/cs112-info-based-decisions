@@ -90,10 +90,10 @@ exp(confint.default(degr.glm.fit))
 ranfor.u78.nodegr=randomForest(u78~.-re78,data=subset(lalonde,nodegr==1),mtry=3,ntree=15)
 #plot(ranfor.u78.nodegr) --> used to test for error
 "Variable importance plot for random forest of non-diploma holders"
-varImpPlot(ranfor.u78.nodegr)
+varImpPlot(ranfor.u78.nodegr, main="Variable Importance for Non-Diploma Holders")
 
 "Random Forest for non-diploma holders; 3 predictors considered; 22 trees to minimize error"
 ranfor.u78.degr=randomForest(u78~.-re78,data=subset(lalonde,nodegr==0),mtry=3,ntree=17)
 #plot(ranfor.u78.degr) --> used to test for error
 "Variable importance plot for random forest of diploma holders "
-varImpPlot(ranfor.u78.degr)
+varImpPlot(ranfor.u78.degr, main="Variable Importance for Diploma Holders")
