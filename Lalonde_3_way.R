@@ -73,8 +73,8 @@ nodegr.glm.fit=glm(u78~treat+age+black+hisp,family=binomial,data=subset(lalonde,
 degr.glm.fit=glm(u78~treat+age+black+hisp,family=binomial,data=subset(lalonde,nodegr==0))
 
 "Finding the treatment coefficient in the logistic regressions"
-summary(nodegr.glm.fit)$coef
-summary(degr.glm.fit)$coef
+summary(nodegr.glm.fit)
+summary(degr.glm.fit)
 
 "Calculating the odds of the treatment --> treatment effect"
 exp(coef(nodegr.glm.fit))
@@ -97,3 +97,11 @@ ranfor.u78.degr=randomForest(u78~.-re78,data=subset(lalonde,nodegr==0),mtry=3,nt
 #plot(ranfor.u78.degr) --> used to test for error
 "Variable importance plot for random forest of diploma holders "
 varImpPlot(ranfor.u78.degr, main="Variable Importance for Diploma Holders")
+
+###
+
+"
+Calculating the statistical significance of black to re78
+"
+black.lm.fit=lm(re78~black+treat,data = subset(lalonde,nodegr==1))
+summary(black.lm.fit)
